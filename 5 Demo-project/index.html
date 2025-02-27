@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Demo Projects</h1>
+    
+    <!-- To-Do List Web App -->
+    <section id="todo">
+        <h2>To-Do List</h2>
+        <input type="text" id="todo-input" placeholder="Enter a task">
+        <button onclick="addTask()">Add</button>
+        <ul id="todo-list"></ul>
+    </section>
+
+    <!-- Student Grade Calculator -->
+    <section id="grade-calculator">
+        <h2>Student Grade Calculator</h2>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Score (0-100)</th>
+            </tr>
+            <tr>
+                <td>CSI101</td>
+                <td><input type="number" class="score" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td>CSI102</td>
+                <td><input type="number" class="score" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td>CSI203</td>
+                <td><input type="number" class="score" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td>CSI204</td>
+                <td><input type="number" class="score" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td>CSI305</td>
+                <td><input type="number" class="score" min="0" max="100"></td>
+            </tr>
+        </table>
+        <button onclick="calculateGPA()">Calculate GPA</button>
+        <p id="gpa-result"></p>
+    </section>
+
+    <!-- Simple API Data Fetching -->
+    <section id="api-fetch">
+        <h2>API Data Fetching</h2>
+        <button onclick="fetchData()">Fetch Users</button>
+        <ul id="user-list"></ul>
+    </section>
+
+    <!-- Lottery Generator -->
+    <section id="lottery">
+        <h2>Lottery</h2>
+    
+        <h3>Try to Guess the Number!</h3>
+        <input type="text" id="guess-input" placeholder="Enter 6-digit number">
+        <button onclick="checkGuess()">Check</button>
+        <p id="guess-result"></p>
+    
+        <p id="lottery-number" style="display: none;"></p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
