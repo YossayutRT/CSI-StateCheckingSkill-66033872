@@ -6,4 +6,4 @@
 **Name:** Yossayut Rutatip
 **Email:** yossayut.rut@spumail.net  
 **Facebook:** YossayutRT
-**GitHub:** [github.com/YossayutRT] 
+**GitHub:** https://github.com/YossayutRT
