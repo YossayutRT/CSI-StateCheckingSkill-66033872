@@ -1,9 +1,9 @@
-# Resume
 
 ## About Me
 
-**Name:** [Your Name]  
-**Email:** [your.email@example.com]  
-**Phone:** [Your Phone Number]  
-**LinkedIn:** [linkedin.com/in/yourprofile]  
-**GitHub:** [github.com/yourusername] 
+![Profile Image](https://studentscms.spu.ac.th/stdempimg.cfm?empstdtype=STD&vdata=08D4CEEDD686FFA50528CED5DC0ECDD682E4160ED0FEDED5)
+
+**Name:** Yossayut Rutatip
+**Email:** yossayut.rut@spumail.net  
+**Facebook:** YossayutRT
+**GitHub:** [github.com/YossayutRT] 
