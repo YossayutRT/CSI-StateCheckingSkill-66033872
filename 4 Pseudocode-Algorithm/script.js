@@ -1,52 +1,84 @@
 // คำนวณพื้นที่วงกลม
 function calculateCircleArea() {
-    let radius = parseFloat(prompt("ป้อนค่ารัศมี:"));
-    if (isNaN(radius) || radius <= 0) {
+    try {
+        let radius = parseFloat(prompt("ป้อนค่ารัศมี:"));
+        if (isNaN(radius) || radius <= 0) {
+            throw new Error("ค่ารัศมีไม่ถูกต้อง");
+        }
+        let area = Math.PI * radius * radius;
+        console.log("พื้นที่วงกลม:", area);
+        document.getElementById("output").innerText = `พื้นที่วงกลม = ${area.toFixed(2)}`;
+    } catch (error) {
+        console.error(error);
         alert("กรุณาป้อนค่ารัศมีที่ถูกต้อง!");
-        return;
     }
-    let area = Math.PI * radius * radius;
-    document.getElementById("output").innerText = `พื้นที่วงกลม = ${area.toFixed(2)}`;
 }
-  
-// ตรวจสอบช่วงอายุ
-function checkAgeCategory() {
-    let age = parseInt(prompt("ป้อนอายุของคุณ:"));
-    if (isNaN(age) || age < 0 || age > 120) {
-        alert("กรุณาป้อนอายุที่ถูกต้อง (0-120 ปี)!");
-        return;
-    }
-    
-    let category;
-    if (age < 7) {
-        category = "วัยทารก";
-    } else if (age < 12) {
-        category = "วัยก่อนเรียน"; // Age 7-11
-    } else if (age < 18) {
-        category = "วัยเรียน"; // Age 12-17
-    } else if (age < 21) {
-        category = "วัยรุ่น"; // Age 18-20
-    } else if (age <= 35) {
-        category = "วัยผู้ใหญ่"; // Age 21-35
-    } else if (age <= 60) {
-        category = "วัยกลางคน"; // Age 36-60
-    } else {
-        category = "วัยสูงอายุ"; // Age 61+
-    }
 
-    document.getElementById("output").innerText = `ช่วงอายุคือ : ${category}`;
+//Pseudocode
+// FUNCTION calculateCircleArea
+// ขอให้ผู้ใช้ป้อนค่ารัศมี
+//     PRINT "ป้อนค่ารัศมี:"
+//     INPUT radius
+
+//แปลงค่ารัศมีเป็นตัวเลขทศนิยม
+//     radius = CONVERT_TO_FLOAT(radius)
+
+//ตรวจสอบว่าค่ารัศมีเป็นตัวเลขและมีค่ามากกว่า 0
+//     IF radius IS NOT A NUMBER OR radius <= 0 THEN
+//         PRINT "ค่ารัศมีไม่ถูกต้อง"
+//         RETURN
+
+//คำนวณพื้นที่ของวงกลม
+//     area = PI * (radius * radius)
+
+// แสดงผลพื้นที่
+//     PRINT "พื้นที่วงกลม =", area
+// END FUNCTION
+  
+
+
+
+// ตรวจสอบช่วงอายุ
+
+function checkAgeCategory() {
+    try {
+        let age = parseInt(prompt("ป้อนอายุของคุณ:"));
+        if (isNaN(age) || age < 0 || age > 120) {
+            throw new Error("อายุไม่ถูกต้อง");
+        }
+        let category;
+        if (age < 7) category = "วัยทารก";
+        else if (age < 12) category = "วัยก่อนเรียน";
+        else if (age < 18) category = "วัยเรียน";
+        else if (age < 21) category = "วัยรุ่น";
+        else if (age <= 35) category = "วัยผู้ใหญ่";
+        else if (age <= 60) category = "วัยกลางคน";
+        else category = "วัยสูงอายุ";
+        
+        console.log("ช่วงอายุ:", category);
+        document.getElementById("output").innerText = `ช่วงอายุคือ : ${category}`;
+    } catch (error) {
+        console.error(error);
+        alert("กรุณาป้อนอายุที่ถูกต้อง!");
+    }
 }
 
 // ตรวจสอบเลขคู่-คี่
 function checkEvenOrOdd() {
-    let number = parseInt(prompt("ป้อนตัวเลข:"));
-    if (isNaN(number)) {
+    try {
+        let number = parseInt(prompt("ป้อนตัวเลข:"));
+        if (isNaN(number)) {
+            throw new Error("ตัวเลขไม่ถูกต้อง");
+        }
+        let result = number % 2 === 0 ? "เลขคู่" : "เลขคี่";
+        console.log("ผลลัพธ์:", result);
+        document.getElementById("output").innerText = `${number} เป็น ${result}`;
+    } catch (error) {
+        console.error(error);
         alert("กรุณาป้อนตัวเลขที่ถูกต้อง!");
-        return;
     }
-    let result = number % 2 === 0 ? "เลขคู่" : "เลขคี่";
-    document.getElementById("output").innerText = `${number} เป็น ${result}`;
 }
+
 
 // แสดงเลข 1-10 ด้วย For Loop
 function displayNumbers() {
@@ -112,6 +144,8 @@ function calculateFactorial() {
 }
 
 // คำนวณ Fibonacci
+
+//สูตรการคำนวน https://www.calculatorsoup.com/calculators/discretemathematics/fibonacci-calculator.php
 function calculateFibonacciSequence() {
     function nthFibonacci(n) {
         if (n <= 1) {
