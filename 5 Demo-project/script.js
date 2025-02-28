@@ -1,28 +1,58 @@
+
 // ฟังก์ชันเพิ่มงานและบันทึกลง localStorage
 function addTask() {
     const input = document.getElementById("todo-input");
     const task = input.value.trim();
 
     if (task) {
-        const li = document.createElement("li");
-        li.classList.add("task-item");
-        
-        const taskText = document.createElement("span");
-        taskText.textContent = task;
-        li.appendChild(taskText);
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "X";
-        removeBtn.classList.add("remove-btn");
-        removeBtn.onclick = function () {
-            li.remove();
-            saveTasks();
-        };
-
-        li.appendChild(removeBtn);
-        document.getElementById("todo-list").appendChild(li);
+        createTaskElement(task, "On Working"); // ค่าเริ่มต้นเป็น "On Working"
         saveTasks();
         input.value = "";
+    }
+}
+
+function createTaskElement(task, status) {
+    const li = document.createElement("li");
+    li.classList.add("task-item");
+
+    const taskText = document.createElement("span");
+    taskText.textContent = task;
+    li.appendChild(taskText);
+
+    // Dropdown เลือกสถานะ
+    const statusSelect = document.createElement("select");
+    statusSelect.innerHTML = `
+        <option value="On Working">On Working</option>
+        <option value="Success">Success</option>
+    `;
+    statusSelect.value = status;
+    statusSelect.onchange = function () {
+        updateTaskColor(li, statusSelect.value);
+        saveTasks();
+    };
+    li.appendChild(statusSelect);
+
+    // Remove
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "X";
+    removeBtn.classList.add("remove-btn");
+    removeBtn.onclick = function () {
+        li.remove();
+        saveTasks();
+    };
+    li.appendChild(removeBtn);
+
+    // ตั้งค่าสีเริ่มต้น
+    updateTaskColor(li, status);
+    document.getElementById("todo-list").appendChild(li);
+}
+
+// Color
+function updateTaskColor(li, status) {
+    if (status === "On Working") {
+        li.style.backgroundColor = "#ffeb3b"; 
+    } else if (status === "Success") {
+        li.style.backgroundColor = "#4caf50";
     }
 }
 
@@ -30,7 +60,9 @@ function addTask() {
 function saveTasks() {
     const tasks = [];
     document.querySelectorAll("#todo-list li").forEach(li => {
-        tasks.push(li.firstChild.textContent);
+        const taskText = li.querySelector("span").textContent;
+        const status = li.querySelector("select").value;
+        tasks.push({ text: taskText, status }); 
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
@@ -38,29 +70,14 @@ function saveTasks() {
 // ฟังก์ชันโหลดข้อมูลจาก localStorage
 function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.forEach(task => {
-        const li = document.createElement("li");
-        li.classList.add("task-item");
-
-        const taskText = document.createElement("span");
-        taskText.textContent = task;
-        li.appendChild(taskText);
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "X";
-        removeBtn.classList.add("remove-btn");
-        removeBtn.onclick = function () {
-            li.remove();
-            saveTasks();
-        };
-
-        li.appendChild(removeBtn);
-        document.getElementById("todo-list").appendChild(li);
-    });
+    tasks.forEach(task => createTaskElement(task.text, task.status));
 }
 
 // โหลดงานที่บันทึกไว้เมื่อหน้าเว็บโหลดเสร็จ
 document.addEventListener("DOMContentLoaded", loadTasks);
+
+
+
 
 function calculateGPA() {
     const scores = document.querySelectorAll(".score");
@@ -68,14 +85,13 @@ function calculateGPA() {
     let totalPoints = 0;
 
     function getGradePoint(score) {
-        if (score >= 85) return 4;
-        if (score >= 80) return 3.5;
-        if (score >= 75) return 3.25;
+        if (score >= 80) return 4;
+        if (score >= 75) return 3.5;
         if (score >= 70) return 3;
         if (score >= 65) return 2.5;
-        if (score >= 60) return 2.25;
-        if (score >= 55) return 2;
-        if (score >= 45) return 1;
+        if (score >= 60) return 2;
+        if (score >= 55) return 1.5;
+        if (score >= 50) return 1;
         return 0;
     }
 

@@ -105,7 +105,7 @@ function sortRandomNumbers() {
     let numbers = Array.from({ length: 100 }, () => Math.floor(Math.random() * 1000));
     
     let randomNumbers = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 100; i++) {
         let randomIndex = Math.floor(Math.random() * numbers.length);
         randomNumbers.push(numbers[randomIndex]);
     }

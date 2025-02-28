@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
     basicData.innerHTML += `<p>Parsed Float: <strong>${pi}</strong></p>`;
     basicData.innerHTML += `<p>Number to String: <strong>${textNum}</strong></p>`;
 
+
+
     // 2. สร้างและใช้งานโครงสร้างข้อมูล
     // List / Array
     let fruits = ["Apple", "Banana", "Cherry"];
@@ -49,4 +51,21 @@ document.addEventListener("DOMContentLoaded", function() {
     jsonData.innerHTML += `<p>Original JSON:</p><pre>${jsonDataContent}</pre>`;
     jsonData.innerHTML += `<p>Modified JSON:</p><pre>${newJsonData}</pre>`;
 
+});
+
+
+//Check input
+document.getElementById("userInput").addEventListener("input", function() {
+    let value = this.value;
+    let type;
+
+    if (!isNaN(value) && value.trim() !== "") {
+        type = Number.isInteger(Number(value)) ? "Integer" : "Float";
+    } else if (value.toLowerCase() === "true" || value.toLowerCase() === "false") {
+        type = "Boolean";
+    } else {
+        type = "String";
+    }
+
+    document.getElementById("typeDisplay").textContent = type;
 });

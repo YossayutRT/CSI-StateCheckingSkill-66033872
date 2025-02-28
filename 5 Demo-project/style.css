@@ -47,16 +47,6 @@ ul li {
     border-radius: 3px;
 }
 
-.task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 8px 12px;
-    margin: 5px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
 .task-item span {
     flex-grow: 1;
@@ -75,4 +65,50 @@ ul li {
 
 .remove-btn:hover {
     background: darkred;
+}
+
+select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background-color: #f7fff0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+select:hover {
+    background-color: #f1f1f1;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+    color: #000000;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease-in-out;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
 }
