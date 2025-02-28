@@ -5,3 +5,5 @@ git branch -M main
 git remote add origin "https://..."
 git fetch origin
 git push --force-with-lease origin main
+
+git rm Example.txt
