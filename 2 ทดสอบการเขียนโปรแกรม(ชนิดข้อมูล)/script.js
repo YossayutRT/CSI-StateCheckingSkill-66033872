@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // 2. สร้างและใช้งานโครงสร้างข้อมูล
     // List / Array
     let fruits = ["Apple", "Banana", "Cherry"];
-    fruits.push("Date");
-    fruits.splice(1, 1); // ลบ Banana
-    fruits[0] = "Apricot"; // แก้ไข Apple เป็น Apricot
+    fruits.push("Ponlamai");
+    fruits.splice(1, 1);
+    fruits[0] = "Apricot"; 
 
     dataStructures.innerHTML += `<p>Array: <strong>${fruits.join(", ")}</strong></p>`;
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 3. จัดการ JSON Data
     let jsonDataContent = '{"name": "Alice", "age": 25, "city": "Bangkok"}';
     let jsonObject = JSON.parse(jsonDataContent); 
-    jsonObject.age = 26; // แก้ไขค่า
+    jsonObject.age = 26;
     let newJsonData = JSON.stringify(jsonObject, null, 2);
 
     jsonData.innerHTML += `<p>Original JSON:</p><pre>${jsonDataContent}</pre>`;
